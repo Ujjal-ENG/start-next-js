@@ -1,7 +1,8 @@
-import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 
 const error = () => {
+  const router = useRouter();
   return (
     <>
       <h1>404</h1>
@@ -9,7 +10,9 @@ const error = () => {
         We are sorry to say, this page is under maintenance or the page is
         remove or not include in our websites!!!
       </h3>
-      <Link href="/">Go back Home Page Click Here/..</Link>
+      <a style={{ cursor: "pointer" }} onClick={() => router.push("/")}>
+        Go back Home Page Click Here/..
+      </a>
     </>
   );
 };
