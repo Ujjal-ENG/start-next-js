@@ -1,3 +1,4 @@
+import Navbar from "@/components/navbar";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
@@ -12,6 +13,7 @@ const error = () => {
 
   return (
     <>
+      <Navbar />
       <h1>404</h1>
       <h3>
         We are sorry to say, this page is under maintenance or the page is
