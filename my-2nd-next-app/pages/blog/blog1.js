@@ -13,7 +13,7 @@ const blog1 = ({ data }) => {
   return (
     <div>
       <Navbar />
-      {data.map((el) => {
+      {data.slice(0, 5).map((el) => {
         return (
           <div className="card" key={el.id}>
             <h1>{el.id}</h1>
@@ -26,7 +26,7 @@ const blog1 = ({ data }) => {
         {`
           .card {
             display: flex;
-            justify-content: center;
+            justify-content: between;
             align-items: center;
             gap: 20px;
             margin: 20px;
@@ -36,6 +36,17 @@ const blog1 = ({ data }) => {
             cursor: pointer;
             background-color: white;
             color: black;
+          }
+          .card h1 {
+            background-color: skyBlue;
+            text-align: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+          }
+          .card p {
+            font-weight: bold;
+            font-size: 20px;
           }
         `}
       </style>
