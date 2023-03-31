@@ -1,4 +1,5 @@
 import Navbar from "@/components/navbar";
+import Link from "next/link";
 import React from "react";
 export const getStaticProps = async () => {
   const fetchURL = await fetch("https://jsonplaceholder.typicode.com/posts");
@@ -17,7 +18,9 @@ const blog1 = ({ data }) => {
         return (
           <div className="card" key={el.id}>
             <h1>{el.id}</h1>
-            <p>{el.title}</p>
+            <Link href={`/blog/${el.id}`}>
+              <p>{el.title}</p>
+            </Link>
           </div>
         );
       })}
