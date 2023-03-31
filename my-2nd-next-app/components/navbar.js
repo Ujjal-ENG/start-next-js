@@ -15,7 +15,7 @@ const Navbar = () => {
             fontWeight: "bold",
           }}
         >
-          <Link href="/">Home</Link>
+          <Link href="/home">Home</Link>
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>
 
