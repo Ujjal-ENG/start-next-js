@@ -9,7 +9,7 @@ const SignUpPage = () => {
     username: "",
   });
 
-  const onSignUp = async (e) => {
+  const onSignUp = async (e: any) => {
     e.preventDefault();
   };
 
