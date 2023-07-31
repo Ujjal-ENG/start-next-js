@@ -1,8 +1,12 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const SignUpPage = () => {
+  const router = useRouter();
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -13,15 +17,28 @@ const SignUpPage = () => {
     e.preventDefault();
   };
 
+  useEffect(() => {
+    if (
+      user.email.length > 0 &&
+      user.password.length > 0 &&
+      user.username.length > 0
+    ) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
+  }, [user]);
+
   return (
     <div className="flex flex-col justify-center items-center min-h-screen py-2">
       <h1 className="py-3">SignUp</h1>
 
-      <form action="" className="flex flex-col space-y-3">
+      <form action="" className="flex flex-col space-y-3 ">
         <label htmlFor="username">UserName: </label>
         <input
           type="text"
           id="username"
+          className="text-black"
           value={user.username}
           onChange={(e) => setUser({ ...user, username: e.target.value })}
         />
@@ -29,6 +46,7 @@ const SignUpPage = () => {
         <input
           type="email"
           id="email"
+          className="text-black"
           value={user.email}
           onChange={(e) => setUser({ ...user, email: e.target.value })}
         />
@@ -36,6 +54,7 @@ const SignUpPage = () => {
         <input
           type="password"
           id="password"
+          className="text-black"
           value={user.password}
           onChange={(e) => setUser({ ...user, password: e.target.value })}
         />
@@ -60,7 +79,9 @@ const SignUpPage = () => {
               ></path>
             </svg>
           </span>
-          <span className="relative">SignUp Here</span>
+          <span className="relative">
+            {buttonDisabled ? "No SignUp Here" : "SignUp Here"}
+          </span>
         </button>
         <Link
           href="/login"
