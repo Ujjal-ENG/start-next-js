@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 const SignUpPage = () => {
   const router = useRouter();
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [user, setUser] = useState({
     email: "",
