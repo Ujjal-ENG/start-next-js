@@ -1,7 +1,9 @@
 "use client";
+import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -16,6 +18,27 @@ const SignUpPage = () => {
 
   const onSignUp = async (e: any) => {
     e.preventDefault();
+    try {
+      setLoading(true);
+      const { data } = axios.post("/api/users/signup", user);
+      if (data) {
+        Swal.fire({
+          icon: "success",
+          title: "Successfully SignedUp...",
+        });
+        console.log(data);
+        setLoading(false);
+        router.push("/login");
+      }
+    } catch (error: any) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Something went wrong! ${error.message}`,
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -32,7 +55,7 @@ const SignUpPage = () => {
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen py-2">
-      <h1 className="py-3">SignUp</h1>
+      <h1 className="py-3">{loading ? "Processing" : "SignUp"}</h1>
 
       <form action="" className="flex flex-col space-y-3 ">
         <label htmlFor="username">UserName: </label>
