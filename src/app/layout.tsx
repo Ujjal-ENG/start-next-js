@@ -8,7 +8,6 @@ import {
   SignedOut,
   SignInButton,
   SignUpButton,
-  UserButton,
 } from "@clerk/nextjs/";
 
 const geistSans = Geist({
@@ -47,8 +46,9 @@ export default function RootLayout({
               </SignUpButton>
             </SignedOut>
             <SignedIn>
-              <UserButton />
-              {children}
+              <div className="w-full flex justify-center items-center h-screen">
+                {children}
+              </div>
             </SignedIn>
           </header>
         </body>
