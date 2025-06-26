@@ -9,7 +9,7 @@ export default function OrgLandingPage() {
   return (
     <main>
       <Navbar />
-      <div>
+      <div className="flex justify-center items-center flex-col">
         <h1 className="font-medium text-xl">Create Your OWn Blog</h1>
         <Input
           className="max-w-3xl p-2 via-border m-2"
