@@ -26,6 +26,5 @@ body {
 }
 ::view-transition-old(*),
 ::view-transition-new(*) {
-  transition: opacity 0.3s ease-in-out;
-  animation-duration: 10000ms;
+  animation-duration: 1000ms;
 }
