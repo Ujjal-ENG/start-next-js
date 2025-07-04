@@ -14,7 +14,7 @@ import { files } from "@wix/media";
 import { members } from "@wix/members";
 import { reviews } from "@wix/reviews";
 
-export function getWixClientId() {
+export function getWixClient() {
   return createClient({
     modules: {
       products,
